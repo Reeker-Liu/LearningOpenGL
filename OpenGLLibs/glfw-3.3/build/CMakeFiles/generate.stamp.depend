@@ -1,0 +1,33 @@
+# CMake generation dependency list for this directory.
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakeCInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakeGenericSystem.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakeLanguageInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakeRCInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CheckIncludeFile.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CheckLibraryExists.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CheckSymbolExists.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/Compiler/MSVC-C.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/FindDoxygen.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/FindPackageMessage.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/FindThreads.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/GNUInstallDirs.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/Platform/Windows.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/Platform/WindowsPaths.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt
+C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build/CMakeFiles/3.14.3/CMakeCCompiler.cmake
+C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build/CMakeFiles/3.14.3/CMakeRCCompiler.cmake
+C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build/CMakeFiles/3.14.3/CMakeSystem.cmake
+C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/cmake_uninstall.cmake.in
+C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/src/glfw3.pc.in
+C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/src/glfw3Config.cmake.in
+C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/src/glfw_config.h.in

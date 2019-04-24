@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AE15D20E-A16C-3274-BFD2-7CD4C7F675D3}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3 -BC:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build --check-stamp-file C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindDoxygen.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\GNUInstallDirs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeCCompiler.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeRCCompiler.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeSystem.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\cmake_uninstall.cmake.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw3.pc.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw3Config.cmake.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw_config.h.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3 -BC:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build --check-stamp-file C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindDoxygen.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\GNUInstallDirs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeCCompiler.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeRCCompiler.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeSystem.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\cmake_uninstall.cmake.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw3.pc.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw3Config.cmake.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw_config.h.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3 -BC:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build --check-stamp-file C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindDoxygen.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\GNUInstallDirs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeCCompiler.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeRCCompiler.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeSystem.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\cmake_uninstall.cmake.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw3.pc.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw3Config.cmake.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw_config.h.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3 -BC:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build --check-stamp-file C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/Users/TR/iCloudDrive/Desktop/PC/glfw-3.3/CMakeLists.txt;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindDoxygen.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\GNUInstallDirs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake;C:\Program Files (x86)\CMake\share\cmake-3.14\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeCCompiler.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeRCCompiler.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\3.14.3\CMakeSystem.cmake;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\cmake_uninstall.cmake.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw3.pc.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw3Config.cmake.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\src\glfw_config.h.in;C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\ZERO_CHECK.vcxproj">
+      <Project>{58C3362C-660C-3931-81F0-7018D3C84ABA}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\boing.vcxproj">
+      <Project>{0AC2F757-6E78-3AE0-8EC5-C73A79D671DB}</Project>
+      <Name>boing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\clipboard.vcxproj">
+      <Project>{B0EFD64F-CE05-3C06-B01D-0A92F963531D}</Project>
+      <Name>clipboard</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\cursor.vcxproj">
+      <Project>{93467E25-1DDE-3858-AA26-EF0A2548696B}</Project>
+      <Name>cursor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\empty.vcxproj">
+      <Project>{073D6384-A935-3B5A-8A7C-75923536B3D7}</Project>
+      <Name>empty</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\events.vcxproj">
+      <Project>{85DFCEE6-182D-30F1-9A73-2A013EDF35BE}</Project>
+      <Name>events</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\gamma.vcxproj">
+      <Project>{349ABF3F-7B93-3058-91FA-CC82AF32BFBE}</Project>
+      <Name>gamma</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\gears.vcxproj">
+      <Project>{8F780622-E158-3C2B-9D32-961382196FAB}</Project>
+      <Name>gears</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\src\glfw.vcxproj">
+      <Project>{B970E58A-31CE-3F4C-AD19-6071512BA3EF}</Project>
+      <Name>glfw</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\glfwinfo.vcxproj">
+      <Project>{C86A94A1-0666-396D-A22C-D9ADF5A62212}</Project>
+      <Name>glfwinfo</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\heightmap.vcxproj">
+      <Project>{B019F72E-3BAA-3D53-8E48-8A779FFBD027}</Project>
+      <Name>heightmap</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\icon.vcxproj">
+      <Project>{E433161B-7DEA-3CBA-81A1-A4DB9EF569B8}</Project>
+      <Name>icon</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\iconify.vcxproj">
+      <Project>{4C8548ED-4259-3F07-B55D-3B942EF9A0CB}</Project>
+      <Name>iconify</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\inputlag.vcxproj">
+      <Project>{D33166E4-DF6E-32DE-B228-C91E3D585B7C}</Project>
+      <Name>inputlag</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\joysticks.vcxproj">
+      <Project>{855FE7B0-79BD-3B31-A473-15D79B93B5BC}</Project>
+      <Name>joysticks</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\monitors.vcxproj">
+      <Project>{45C4E8AD-0734-3DE7-A447-6942D9965566}</Project>
+      <Name>monitors</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\msaa.vcxproj">
+      <Project>{473058B4-86F2-3379-BD27-840B70EBB71E}</Project>
+      <Name>msaa</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\offscreen.vcxproj">
+      <Project>{53DD0C8C-7E81-33D1-A05E-FAF09220F82B}</Project>
+      <Name>offscreen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\opacity.vcxproj">
+      <Project>{C3A9AFFD-28D7-3545-9A0A-FEA2400CD8EE}</Project>
+      <Name>opacity</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\particles.vcxproj">
+      <Project>{A2976D0C-6F04-3E11-B05D-813B35B2DAE7}</Project>
+      <Name>particles</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\reopen.vcxproj">
+      <Project>{81E096F2-F1E8-3B6B-969D-A70B6F5C77E2}</Project>
+      <Name>reopen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\sharing.vcxproj">
+      <Project>{845816D6-B9D9-30FE-BBD2-800347E5B40A}</Project>
+      <Name>sharing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\simple.vcxproj">
+      <Project>{CC551639-F137-3D3C-ADCC-3CBAA71215FA}</Project>
+      <Name>simple</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\splitview.vcxproj">
+      <Project>{AAFEAF96-8CBC-3D8F-B009-A6859C5C4144}</Project>
+      <Name>splitview</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\tearing.vcxproj">
+      <Project>{C2C7A802-51C8-319C-81D8-11EB32B264CA}</Project>
+      <Name>tearing</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\threads.vcxproj">
+      <Project>{D7E5453B-B410-3A00-9DDB-45459ADF3978}</Project>
+      <Name>threads</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\timeout.vcxproj">
+      <Project>{EFE71CDF-73ED-301E-B369-335EE1F9F77E}</Project>
+      <Name>timeout</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\title.vcxproj">
+      <Project>{55DB89C1-09D0-3615-830C-52227F963D38}</Project>
+      <Name>title</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\vulkan.vcxproj">
+      <Project>{674B2A9F-BE3C-30E6-98A7-547CE37165BA}</Project>
+      <Name>vulkan</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\examples\wave.vcxproj">
+      <Project>{0EF3CD65-92BF-3F79-9C00-8752B0A0E7F7}</Project>
+      <Name>wave</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\TR\iCloudDrive\Desktop\PC\glfw-3.3\build\tests\windows.vcxproj">
+      <Project>{735C1495-2904-3154-A686-C5C0834A2CC9}</Project>
+      <Name>windows</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
