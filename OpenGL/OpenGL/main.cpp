@@ -16,25 +16,30 @@ void processInput(GLFWwindow* window);
 const char* vertexShaderSource =
 "#version 330 core\n"
 "layout(location = 0) in vec3 aPos;\n"
+"layout(location = 1) in vec3 aColor;\n"
+"out vec3 myColor2;\n"
 "void main()\n"
 "{\n"
 "	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+"	myColor2 = aColor;\n"
 "}\0";
 
 const char* fragmentShader1Source =
 "#version 330 core\n"
 "out vec4 FragColor;\n"
+"uniform vec4 myColor;"
 "void main()\n"
 "{\n"
-"	FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"	FragColor = myColor;\n"
 "}\0";
 
 const char* fragmentShader2Source =
 "#version 330 core\n"
 "out vec4 FragColor;\n"
+"in vec3 myColor2;\n"
 "void main()\n"
 "{\n"
-"	FragColor = vec4(1.0f, 1.0f, 0.0f, 1.0f);\n"
+"	FragColor = vec4(myColor2, 1.0f);\n"
 "}\0";
 
 int main()
@@ -125,10 +130,10 @@ int main()
 		0.5f, 0.5f, 0.0f, //rt
 	};
 	float vertices2[] =
-	{
-		-0.5f, -0.5f, 0.0f, //lb
-		0.5f, 0.5f, 0.0f, //rt
-		0.5f, -0.5f, 0.0f, //rb
+	{	//position			//color
+		-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,//lb
+		0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f,//rt
+		0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f//rb
 	};
 	//set up indices
 	unsigned int indices[] =
@@ -154,8 +159,10 @@ int main()
 	glBindVertexArray(VAO[1]);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 
 	//glGenBuffers(1, &EBO);
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -187,6 +194,14 @@ int main()
 
 		//draw triangle
 		glUseProgram(shaderProgramOrange);
+
+		float timeValue = glfwGetTime();
+		float colorValue1 = sin(timeValue) / 2.0f + 0.5;
+		float colorValue2 = cos(timeValue) / 2.0f + 0.5;
+		int vertexColorLocation = glGetUniformLocation(shaderProgramOrange, "myColor");
+		glUniform4f(vertexColorLocation, colorValue1, colorValue2, 0.0f, 1.0f);
+
+
 		glBindVertexArray(VAO[0]);
 		//premitive type, start index, vertices number
 		glDrawArrays(GL_TRIANGLES, 0, 3);
