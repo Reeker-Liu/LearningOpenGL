@@ -3,6 +3,9 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "stb_image.h"
 #include "shader.h"
@@ -14,6 +17,9 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 float mixValue = 0.2f;
+float offsetX = 0.0f;
+float offsetY = 0.0f;
+float radians = 0.0f;
 
 int main()
 {
@@ -178,6 +184,14 @@ int main()
 
 		shaderProgram.setFloat("mixValue", mixValue);
 
+		glm::mat4 trans;
+		trans = glm::translate(trans, glm::vec3(offsetX, offsetY, 0.0f));
+		trans = glm::rotate(trans, radians, glm::vec3(0.0f, 0.0f, 1.0f));
+		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 1.0));
+
+		unsigned int transformLocation = glGetUniformLocation(shaderProgram.ID, "transform");
+		glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(trans));
+
 		glBindVertexArray(VAO[0]);
 		//premitive type, start index, vertices number
 		//glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -226,5 +240,35 @@ void processInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
 	{
 		mixValue = std::max(mixValue - 0.01f, 0.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+	{
+		radians -= 0.01f;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+	{
+		radians += 0.01f;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	{
+		offsetY = std::min(offsetY + 0.01f, 1.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	{
+		offsetY = std::max(offsetY - 0.01f, -1.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	{
+		offsetX = std::min(offsetX + 0.01f, 1.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	{
+		offsetX = std::max(offsetX - 0.01f, -1.0f);
 	}
 }

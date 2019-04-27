@@ -38,6 +38,7 @@ public:
 		glUniform4f(glGetUniformLocation(ID, name.c_str()), value1, value2, value3, value4);
 	}
 
+
 private:
 	//check shader compilation/linking errors
 	void checkCompileError(unsigned int shader);
