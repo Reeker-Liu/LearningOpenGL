@@ -16,9 +16,9 @@ const unsigned int HEIGHT = 600;
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
-float mixValue = 0.2f;
 float offsetX = 0.0f;
 float offsetY = 0.0f;
+float offsetZ = 0.0f;
 float radians = 0.0f;
 
 int main()
@@ -182,15 +182,25 @@ int main()
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture[1]);
 
-		shaderProgram.setFloat("mixValue", mixValue);
 
 		glm::mat4 trans;
-		trans = glm::translate(trans, glm::vec3(offsetX, offsetY, 0.0f));
+		trans = glm::translate(trans, glm::vec3(offsetX, offsetY, offsetZ));
 		trans = glm::rotate(trans, radians, glm::vec3(0.0f, 0.0f, 1.0f));
-		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 1.0));
+		trans = glm::scale(trans, glm::vec3(1.0, 1.0, 1.0));
 
-		unsigned int transformLocation = glGetUniformLocation(shaderProgram.ID, "transform");
-		glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(trans));
+		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans));
+
+		glm::mat4 model;
+		model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+		glm::mat4 view;
+		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+		glm::mat4 projection;
+		projection = glm::perspective(glm::radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+
+		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
+		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
 
 		glBindVertexArray(VAO[0]);
 		//premitive type, start index, vertices number
@@ -232,16 +242,6 @@ void processInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 
-	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-	{
-		mixValue = std::min(mixValue + 0.01f, 1.0f);
-	}
-
-	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-	{
-		mixValue = std::max(mixValue - 0.01f, 0.0f);
-	}
-
 	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
 	{
 		radians -= 0.01f;
@@ -250,6 +250,16 @@ void processInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
 	{
 		radians += 0.01f;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+	{
+		offsetZ = std::min(offsetZ + 0.01f, 1.0f);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+	{
+		offsetZ = std::max(offsetZ - 0.01f, -1.0f);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
