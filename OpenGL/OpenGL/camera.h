@@ -48,6 +48,10 @@ public:
 		updateCameraVectors();
 	}
 
+	Camera(glm::vec3 _position, bool _lockedY)
+		:Camera(_position, WORLDUP, YAW, PITCH, _lockedY)
+	{ }
+
 	glm::mat4 getViewMatrix()
 	{
 		return glm::lookAt(position, position + front, up);
