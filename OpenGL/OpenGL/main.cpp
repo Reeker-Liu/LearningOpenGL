@@ -80,72 +80,58 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 
 	//start to build shader program
-	Shader shaderProgram("shader/vcamera.glsl", "shader/fcamera.glsl");
+	Shader shader("shader/vlight.glsl", "shader/flight.glsl");
+	Shader lightShader("shader/vlight.glsl", "shader/f_light.glsl");
 
 
 	//set up vertices
-	//float vertices[] =
-	//{	//position			//colors			//texture
-	//	0.5f, 0.5f, 0.0f,	1.0f, 0.0f, 0.0f,	1.0f, 1.0f,	//rt
-	//	0.5f, -0.5f, 0.0f,	0.0f, 1.0f, 0.0f,	1.0f, 0.0f,	//rb
-	//	-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,	0.0f, 0.0f,	//lb
-	//	-0.5f, 0.5f, 0.0f,	1.0f, 1.0f, 0.0f,	0.0f, 1.0f//lt
-	//};
 	float vertices[] = {
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	   -0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+		0.5f,  0.5f, -0.5f,
+		0.5f,  0.5f, -0.5f,
+	   -0.5f,  0.5f, -0.5f,
+	   -0.5f, -0.5f, -0.5f,
 
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	   -0.5f, -0.5f,  0.5f,
+		0.5f, -0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
+	   -0.5f,  0.5f,  0.5f,
+	   -0.5f, -0.5f,  0.5f,
 
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	   -0.5f,  0.5f,  0.5f,
+	   -0.5f,  0.5f, -0.5f,
+	   -0.5f, -0.5f, -0.5f,
+	   -0.5f, -0.5f, -0.5f,
+	   -0.5f, -0.5f,  0.5f,
+	   -0.5f,  0.5f,  0.5f,
 
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
 
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	   -0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f,  0.5f,
+		0.5f, -0.5f,  0.5f,
+	   -0.5f, -0.5f,  0.5f,
+	   -0.5f, -0.5f, -0.5f,
 
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	   -0.5f,  0.5f, -0.5f,
+		0.5f,  0.5f, -0.5f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
+	   -0.5f,  0.5f,  0.5f,
+	   -0.5f,  0.5f, -0.5f,
 	};
-	//set up indices
-	unsigned int indices[] =
-	{
-		0, 1, 3,
-		1, 2, 3
-	};
-
-
 
 	//generate and bind VAO VBO EBO
-	unsigned int VBO[1], VAO[1];// , EBO[1];
-	glGenVertexArrays(1, VAO);
+	unsigned int VBO[1], VAO[2];//, EBO[1];
+	glGenVertexArrays(2, VAO);
 	glGenBuffers(1, VBO);
 	//glGenBuffers(1, EBO);
 
@@ -159,61 +145,15 @@ int main()
 
 	//configure vertex attribute
 	//location = 0, vec3 is 3, type is float, if need to normalize, stride, offset with type void*
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
+	glBindVertexArray(VAO[1]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
 
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
 
-
-	//use texture
-	unsigned int texture[2];
-	glGenTextures(2, texture);
-
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	int width, height, nrChannels;
-	stbi_set_flip_vertically_on_load(true);
-	unsigned char* data = stbi_load("res/container.jpg", &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
-
-
-	glBindTexture(GL_TEXTURE_2D, texture[1]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	data = stbi_load("res/pen.png", &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
-
-
-	shaderProgram.use();
-	shaderProgram.setInt("texture1", 0);
-	shaderProgram.setInt("texture2", 1);
 
 	//draw in wireframe polygons
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -232,35 +172,36 @@ int main()
 		processInput(window);
 
 		//rendering operations
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);	//func set gl state
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);	//func set gl state
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	//func use gl state
 
 		//draw 
-		shaderProgram.use();
+		shader.use();
+		shader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+		shader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture[0]);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texture[1]);
+		glm::mat4 model(1.0f);
+		shader.setMat4("model", model);
+		glm::mat4 view = camera.getViewMatrix();
+		shader.setMat4("view", view);
+		glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+		shader.setMat4("projection", projection);
 
 		glBindVertexArray(VAO[0]);
-
-		glm::mat4 view = camera.getViewMatrix();
-		shaderProgram.setMat4("view", view);
-		glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-		shaderProgram.setMat4("projection", projection);
-
-		glm::mat4 model;
-		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
-
-		glDrawArrays(GL_TRIANGLES, 0, 36);	//premitive type, start index, vertices number
-
-		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 2.5f));
-		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
-
 		glDrawArrays(GL_TRIANGLES, 0, 36);	//premitive type, start index, vertices number
 		
+		lightShader.use();
+		glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+		model = glm::translate(model, lightPos);
+		model = glm::scale(model, glm::vec3(0.2f));
+
+		lightShader.setMat4("model", model);
+		lightShader.setMat4("view", view);
+		lightShader.setMat4("projection", projection);
+
+		glBindVertexArray(VAO[1]);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
 		
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//premitive type, vertices number, indice type, offset
 
@@ -272,7 +213,7 @@ int main()
 	}
 
 	//deallocate resources
-	glDeleteVertexArrays(1, VAO);
+	glDeleteVertexArrays(2, VAO);
 	glDeleteBuffers(1, VBO);
 	//glDeleteBuffers(1, EBO);
 
