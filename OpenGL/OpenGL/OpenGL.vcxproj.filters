@@ -27,6 +27,9 @@
     <ClCompile Include="stb_images.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.h">

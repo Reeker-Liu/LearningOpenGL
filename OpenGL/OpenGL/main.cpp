@@ -8,19 +8,17 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "stb_image.h"
-#include "shader.h"
 
-const unsigned int WIDTH = 600;
-const unsigned int HEIGHT = 600;
+#include "shader.h"
+#include "camera.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
 void scroll_callback(GLFWwindow* window, double xOffset, double yOffset);
 void processInput(GLFWwindow* window);
 
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+const unsigned int WIDTH = 600;
+const unsigned int HEIGHT = 600;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
@@ -28,9 +26,7 @@ float lastFrame = 0.0f;
 bool firstMouse = true;
 float lastX = WIDTH / 2;
 float lastY = HEIGHT / 2;
-float yaw = -90.0f;
-float pitch = 0.0f;
-float fov = 45.0f;
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
 int main()
@@ -249,10 +245,10 @@ int main()
 
 		glBindVertexArray(VAO[0]);
 
-		glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));
-		glm::mat4 projection = glm::perspective(glm::radians(fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-		glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+		glm::mat4 view = camera.getViewMatrix();
+		shaderProgram.setMat4("view", view);
+		glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+		shaderProgram.setMat4("projection", projection);
 
 		glm::mat4 model;
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
@@ -295,45 +291,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-void mouse_callback(GLFWwindow* window, double xPos, double yPos)
-{
-	if (firstMouse)
-	{
-		lastX = xPos;
-		lastY = yPos;
-		firstMouse = false;
-	}
-
-	float xOffset = xPos - lastX;
-	float yOffset = lastY - yPos;
-	lastX = xPos;
-	lastY = yPos;
-
-	float sensitivity = 0.05;
-	xOffset *= sensitivity;
-	yOffset *= sensitivity;
-
-	yaw += xOffset;
-	pitch += yOffset;
-
-	pitch = std::min(89.0f, pitch);
-	pitch = std::max(-89.0f, pitch);
-
-	glm::vec3 front;
-	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	front.y = sin(glm::radians(pitch));
-	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-	cameraFront = glm::normalize(front);
-}
-
-void scroll_callback(GLFWwindow* window, double xOffset, double yOffset)
-{
-	if(fov >= 1.0f && fov <= 45.0f)
-		fov -= yOffset;
-	fov = std::max(fov, 1.0f);
-	fov = std::min(fov, 45.0f);
-}
-
 void processInput(GLFWwindow* window)
 {
 	//check  whether the esc key is pressed
@@ -356,25 +313,45 @@ void processInput(GLFWwindow* window)
 	{
 	}
 
-	float cameraSpeed = 2.5f * deltaTime;
-
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
-		cameraPos += cameraSpeed * cameraFront;
+		camera.processKeyBoard(move_t::FORWARD, deltaTime);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
-		cameraPos -= cameraSpeed * cameraFront;
+		camera.processKeyBoard(move_t::BACKWARD, deltaTime);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{
-		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+		camera.processKeyBoard(move_t::RIGHT, deltaTime);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
-		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+		camera.processKeyBoard(move_t::LEFT, deltaTime);
 	}
+}
+
+void mouse_callback(GLFWwindow* window, double xPos, double yPos)
+{
+	if (firstMouse)
+	{
+		lastX = xPos;
+		lastY = yPos;
+		firstMouse = false;
+	}
+
+	float xOffset = xPos - lastX;
+	float yOffset = lastY - yPos;
+	lastX = xPos;
+	lastY = yPos;
+
+	camera.processMouseMovement(xOffset, yOffset);
+}
+
+void scroll_callback(GLFWwindow* window, double xOffset, double yOffset)
+{
+	camera.processMouseScroll(yOffset);
 }
