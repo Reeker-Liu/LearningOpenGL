@@ -181,9 +181,19 @@ int main()
 
 		//draw 
 		shader.use();
-		shader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-		shader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-		shader.setVec3("lightPos", lightPos);
+		shader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
+		shader.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+		shader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+		shader.setFloat("material.shininess", 32.0f);
+		glm::vec3 lightColor;
+		lightColor.x = sin(currentFrame * 2.0f);
+		lightColor.y = sin(currentFrame * 0.7);
+		lightColor.z = sin(currentFrame * 1.3);
+		shader.setVec3("light.ambient", lightColor * glm::vec3(0.2));
+		shader.setVec3("light.diffuse", lightColor * glm::vec3(0.5));
+		shader.setVec3("light.specular", lightColor);
+		shader.setVec3("light.position", lightPos);
+		shader.setVec3("viewPos", camera.position);
 
 		glm::mat4 model(1.0f);
 		shader.setMat4("model", model);
