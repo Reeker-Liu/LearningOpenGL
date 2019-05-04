@@ -47,7 +47,7 @@ public:
 		setupMesh();
 	}
 
-	void Draw(Shader shader)
+	void draw(Shader shader)
 	{
 		unsigned int diffuseN = 0;
 		unsigned int specularN = 0;
