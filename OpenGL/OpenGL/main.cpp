@@ -32,7 +32,7 @@ float lastY = HEIGHT / 2;
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f), true);
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
-bool showMatrix = true;
+bool showMatrix = false;
 float lastChange = 0.0f;
 
 int main()
@@ -166,10 +166,10 @@ int main()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
+	shader.use();
 	unsigned int diffuseMap = loadTexture("res/container2.png");
 	unsigned int specularMap = loadTexture("res/container2_specular.png");
 	unsigned int emissionMap = loadTexture("res/matrix.jpg");
-	shader.use();
 	shader.setInt("material.diffuse", 0);
 	shader.setInt("material.specular", 1);
 	shader.setInt("material.emission", 2);
@@ -198,16 +198,34 @@ int main()
 		//draw 
 		shader.use();
 		shader.setFloat("material.shininess", 32.0f);
-
-		shader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
-		shader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
-		shader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-
-		shader.setVec3("light.position", lightPos);
 		shader.setVec3("viewPos", camera.position);
 
+		shader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+		shader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+		shader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+		shader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+
+		shader.setVec3("pointLight.position", lightPos);
+		shader.setVec3("pointLight.ambient", 0.05f, 0.05f, 0.05f);
+		shader.setVec3("pointLight.diffuse", 0.8f, 0.8f, 0.8f);
+		shader.setVec3("pointLight.specular", 1.0f, 1.0f, 1.0f);
+		shader.setFloat("pointLight.constant", 1.0f);
+		shader.setFloat("pointLight.linear", 0.09);
+		shader.setFloat("pointLight.quadratic", 0.032);
+
+		shader.setVec3("spotLight.position", camera.position);
+		shader.setVec3("spotLight.direction", camera.front);
+		shader.setVec3("spotLight.ambient", 0.05f, 0.05f, 0.05f);
+		shader.setVec3("spotLight.diffuse", 0.8f, 0.8f, 0.8f);
+		shader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
+		shader.setFloat("spotLight.constant", 1.0f);
+		shader.setFloat("spotLight.linear", 0.09);
+		shader.setFloat("spotLight.quadratic", 0.032);
+		shader.setFloat("spotLight.cutoff", glm::cos(glm::radians(10.0f)));
+		shader.setFloat("spotLight.outerCutoff", glm::cos(glm::radians(15.0f)));
+
 		glm::mat4 model(1.0f);
-		shader.setMat4("model", model);
+		model = glm::translate(model, glm::vec3(-6.0, 0.0, 0.0));
 		glm::mat4 view = camera.getViewMatrix();
 		shader.setMat4("view", view);
 		glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
@@ -227,10 +245,17 @@ int main()
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
 
-		glBindVertexArray(VAO[0]);
-		glDrawArrays(GL_TRIANGLES, 0, 36);	//premitive type, start index, vertices number
+		for (int i = 0; i < 8; ++i)
+		{
+			model = glm::translate(model, glm::vec3(2.0f, 0.0, 0.0));
+			shader.setMat4("model", model);
+			glBindVertexArray(VAO[0]);
+			glDrawArrays(GL_TRIANGLES, 0, 36);	//premitive type, start index, vertices number
+		}
+		
 		
 		lightShader.use();
+		model = glm::mat4(1.0f);
 		model = glm::translate(model, lightPos);
 		model = glm::scale(model, glm::vec3(0.2f));
 
