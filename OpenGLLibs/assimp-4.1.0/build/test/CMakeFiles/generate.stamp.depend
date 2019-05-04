@@ -1,0 +1,6 @@
+# CMake generation dependency list for this directory.
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CTest.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CTestTargets.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/CTestUseLaunchers.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.14/Modules/DartConfiguration.tcl.in
+C:/Users/TR/Desktop/assimp-4.1.0/test/CMakeLists.txt
