@@ -212,17 +212,13 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
 		shader.setMat4("model", model);
-		suitModel.draw(shader);
-
-		/*
+		
 		shader.setFloat("material.shininess", 32.0f);
 		shader.setVec3("viewPos", camera.position);
 		shader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-		shader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
 		shader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
 		shader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
 		shader.setVec3("pointLight.position", lightPos);
-		shader.setVec3("pointLight.ambient", 0.05f, 0.05f, 0.05f);
 		shader.setVec3("pointLight.diffuse", 0.8f, 0.8f, 0.8f);
 		shader.setVec3("pointLight.specular", 1.0f, 1.0f, 1.0f);
 		shader.setFloat("pointLight.constant", 1.0f);
@@ -230,7 +226,6 @@ int main()
 		shader.setFloat("pointLight.quadratic", 0.032);
 		shader.setVec3("spotLight.position", camera.position);
 		shader.setVec3("spotLight.direction", camera.front);
-		shader.setVec3("spotLight.ambient", 0.05f, 0.05f, 0.05f);
 		shader.setVec3("spotLight.diffuse", 0.8f, 0.8f, 0.8f);
 		shader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
 		shader.setFloat("spotLight.constant", 1.0f);
@@ -238,33 +233,8 @@ int main()
 		shader.setFloat("spotLight.quadratic", 0.032);
 		shader.setFloat("spotLight.cutoff", glm::cos(glm::radians(10.0f)));
 		shader.setFloat("spotLight.outerCutoff", glm::cos(glm::radians(15.0f)));
-		glm::mat4 model(1.0f);
-		model = glm::translate(model, glm::vec3(-6.0, 0.0, 0.0));
-		glm::mat4 view = camera.getViewMatrix();
-		shader.setMat4("view", view);
-		glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
-		shader.setMat4("projection", projection);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, diffuseMap);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, specularMap);
-		glActiveTexture(GL_TEXTURE2);
-		if (showMatrix)
-		{
-			glBindTexture(GL_TEXTURE_2D, emissionMap);
-		}
-		else
-		{
-			glBindTexture(GL_TEXTURE_2D, 0);
-		}
-		for (int i = 0; i < 8; ++i)
-		{
-			model = glm::translate(model, glm::vec3(2.0f, 0.0, 0.0));
-			shader.setMat4("model", model);
-			glBindVertexArray(VAO[0]);
-			glDrawArrays(GL_TRIANGLES, 0, 36);	//premitive type, start index, vertices number
-		}
-		*/
+
+		suitModel.draw(shader);
 
 		lightShader.use();
 		model = glm::mat4(1.0f);

@@ -85,6 +85,7 @@ private:
 		vector<Vertex> vertices;
 		vector<unsigned int> indices;
 		vector<Texture> textures;
+		//mesh->mNormals
 
 		for (size_t i = 0; i < mesh->mNumVertices; ++i)
 		{
