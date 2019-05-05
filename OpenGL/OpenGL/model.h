@@ -41,7 +41,7 @@ public:
 		loadModel(path);
 	}
 
-	void draw(Shader shader)
+	void draw(Shader &shader)
 	{
 		for (size_t i = 0; i < meshes.size(); ++i)
 			meshes[i].draw(shader);
@@ -58,11 +58,14 @@ private:
 			return;
 		}
 		directory = path.substr(0, path.find_last_of("/"));
+		cout << "model path : " << path << endl;
+		cout << "directory : " << directory << endl;
 		processNode(scene->mRootNode, scene);
 	}
 
 	void processNode(aiNode *node, const aiScene *scene)
 	{
+		cout << "start process node - " << node->mName.C_Str() << endl;
 		for (size_t i = 0; i < node->mNumMeshes; ++i)
 		{
 			aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
@@ -72,6 +75,7 @@ private:
 		{
 			processNode(node->mChildren[i], scene);
 		}
+		cout << "end process node - " << node->mName.C_Str() << endl;
 	}
 
 	Mesh processMesh(aiMesh *mesh, const aiScene *scene)
@@ -201,6 +205,8 @@ unsigned int loadTexture(const string &path, const string &directory, bool gamma
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		cout << "finish loading texture from " << path << endl;
 	}
 	else
 	{

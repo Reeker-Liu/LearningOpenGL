@@ -87,11 +87,11 @@ int main()
 	//start to build shader program
 	Shader shader("shader/vmodel.glsl", "shader/fmodel.glsl");
 	//Shader shader("shader/vlight.glsl", "shader/flight.glsl");
-	//Shader lightShader("shader/vlight.glsl", "shader/f_light.glsl");
+	Shader lightShader("shader/vlight.glsl", "shader/f_light.glsl");
 
 	Model suitModel("resources/objects/nanosuit/nanosuit.obj");
 
-	/*
+	
 
 	//set up vertices
 	float vertices[] = {
@@ -169,6 +169,7 @@ int main()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
+	/*
 	shader.use();
 	unsigned int diffuseMap = loadTexture("res/container2.png");
 	unsigned int specularMap = loadTexture("res/container2_specular.png");
@@ -176,8 +177,8 @@ int main()
 	shader.setInt("material.diffuse", 0);
 	shader.setInt("material.specular", 1);
 	shader.setInt("material.emission", 2);
-
 	*/
+	
 
 	//draw in wireframe polygons
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -269,7 +270,7 @@ int main()
 			glBindVertexArray(VAO[0]);
 			glDrawArrays(GL_TRIANGLES, 0, 36);	//premitive type, start index, vertices number
 		}
-		
+		*/
 		
 		lightShader.use();
 		model = glm::mat4(1.0f);
@@ -282,7 +283,7 @@ int main()
 
 		glBindVertexArray(VAO[1]);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-		*/
+		
 		
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//premitive type, vertices number, indice type, offset
 
