@@ -1,17 +1,15 @@
-#include <iostream>
-#include <algorithm>
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "stb_image.h"
-
 #include "shader.h"
 #include "camera.h"
 #include "model.h"
+
+#include <iostream>
+#include <algorithm>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
@@ -87,9 +85,13 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 
 	//start to build shader program
-	Shader shader("shader/vlight.glsl", "shader/flight.glsl");
-	Shader lightShader("shader/vlight.glsl", "shader/f_light.glsl");
+	Shader shader("shader/vmodel.glsl", "shader/fmodel.glsl");
+	//Shader shader("shader/vlight.glsl", "shader/flight.glsl");
+	//Shader lightShader("shader/vlight.glsl", "shader/f_light.glsl");
 
+	Model suitModel("resources/objects/nanosuit/nanosuit.obj");
+
+	/*
 
 	//set up vertices
 	float vertices[] = {
@@ -175,6 +177,7 @@ int main()
 	shader.setInt("material.specular", 1);
 	shader.setInt("material.emission", 2);
 
+	*/
 
 	//draw in wireframe polygons
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -198,6 +201,19 @@ int main()
 
 		//draw 
 		shader.use();
+
+		glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+		glm::mat4 view = camera.getViewMatrix();
+		shader.setMat4("projection", projection);
+		shader.setMat4("view", view);
+
+		glm::mat4 model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		shader.setMat4("mode", model);
+		suitModel.draw(shader);
+
+		/*
 		shader.setFloat("material.shininess", 32.0f);
 		shader.setVec3("viewPos", camera.position);
 
@@ -266,7 +282,7 @@ int main()
 
 		glBindVertexArray(VAO[1]);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-
+		*/
 		
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//premitive type, vertices number, indice type, offset
 
@@ -278,8 +294,8 @@ int main()
 	}
 
 	//deallocate resources
-	glDeleteVertexArrays(2, VAO);
-	glDeleteBuffers(1, VBO);
+	//glDeleteVertexArrays(2, VAO);
+	//glDeleteBuffers(1, VBO);
 	//glDeleteBuffers(1, EBO);
 
 	glfwTerminate();
