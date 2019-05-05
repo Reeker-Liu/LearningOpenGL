@@ -28,7 +28,7 @@ bool firstMouse = true;
 float lastX = WIDTH / 2;
 float lastY = HEIGHT / 2;
 
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f), true);
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f), false);
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 bool showMatrix = false;
@@ -91,7 +91,7 @@ int main()
 
 	Model suitModel("resources/objects/nanosuit/nanosuit.obj");
 
-	
+
 
 	//set up vertices
 	float vertices[] = {
@@ -178,7 +178,7 @@ int main()
 	shader.setInt("material.specular", 1);
 	shader.setInt("material.emission", 2);
 	*/
-	
+
 
 	//draw in wireframe polygons
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -210,19 +210,17 @@ int main()
 
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		shader.setMat4("mode", model);
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		shader.setMat4("model", model);
 		suitModel.draw(shader);
 
 		/*
 		shader.setFloat("material.shininess", 32.0f);
 		shader.setVec3("viewPos", camera.position);
-
 		shader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
 		shader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
 		shader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
 		shader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-
 		shader.setVec3("pointLight.position", lightPos);
 		shader.setVec3("pointLight.ambient", 0.05f, 0.05f, 0.05f);
 		shader.setVec3("pointLight.diffuse", 0.8f, 0.8f, 0.8f);
@@ -230,7 +228,6 @@ int main()
 		shader.setFloat("pointLight.constant", 1.0f);
 		shader.setFloat("pointLight.linear", 0.09);
 		shader.setFloat("pointLight.quadratic", 0.032);
-
 		shader.setVec3("spotLight.position", camera.position);
 		shader.setVec3("spotLight.direction", camera.front);
 		shader.setVec3("spotLight.ambient", 0.05f, 0.05f, 0.05f);
@@ -241,14 +238,12 @@ int main()
 		shader.setFloat("spotLight.quadratic", 0.032);
 		shader.setFloat("spotLight.cutoff", glm::cos(glm::radians(10.0f)));
 		shader.setFloat("spotLight.outerCutoff", glm::cos(glm::radians(15.0f)));
-
 		glm::mat4 model(1.0f);
 		model = glm::translate(model, glm::vec3(-6.0, 0.0, 0.0));
 		glm::mat4 view = camera.getViewMatrix();
 		shader.setMat4("view", view);
 		glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 		shader.setMat4("projection", projection);
-
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
 		glActiveTexture(GL_TEXTURE1);
@@ -262,7 +257,6 @@ int main()
 		{
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
-
 		for (int i = 0; i < 8; ++i)
 		{
 			model = glm::translate(model, glm::vec3(2.0f, 0.0, 0.0));
@@ -271,7 +265,7 @@ int main()
 			glDrawArrays(GL_TRIANGLES, 0, 36);	//premitive type, start index, vertices number
 		}
 		*/
-		
+
 		lightShader.use();
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, lightPos);
@@ -283,8 +277,8 @@ int main()
 
 		glBindVertexArray(VAO[1]);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-		
-		
+
+
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	//premitive type, vertices number, indice type, offset
 
 
@@ -338,22 +332,22 @@ void processInput(GLFWwindow* window)
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
-		camera.processKeyBoard(move_t::FORWARD, deltaTime);
+		camera.processKeyboard(move_t::FORWARD, deltaTime);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
-		camera.processKeyBoard(move_t::BACKWARD, deltaTime);
+		camera.processKeyboard(move_t::BACKWARD, deltaTime);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{
-		camera.processKeyBoard(move_t::RIGHT, deltaTime);
+		camera.processKeyboard(move_t::RIGHT, deltaTime);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
-		camera.processKeyBoard(move_t::LEFT, deltaTime);
+		camera.processKeyboard(move_t::LEFT, deltaTime);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)

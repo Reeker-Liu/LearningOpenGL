@@ -57,7 +57,7 @@ public:
 		return glm::lookAt(position, position + front, up);
 	}
 
-	void processKeyBoard(move_t direction, float deltaTime)
+	void processKeyboard(move_t direction, float deltaTime)
 	{
 		float velocity = movementSpeed * deltaTime;
 		switch (direction)

@@ -20,18 +20,20 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <unordered_map>
 
 using std::vector;
 using std::string;
 using std::cout;
 using std::endl;
+using std::unordered_map;
 
 unsigned int loadTexture(const string &path, const string &directory, bool gamma = false);
 
 class Model
 {
 public:
-	vector<Texture> textures_loaded;
+	unordered_map<string, Texture> textures_loaded;
 	vector<Mesh> meshes;
 	string directory;
 	bool gammaCorrection;
@@ -154,24 +156,19 @@ private:
 		{
 			aiString str;
 			material->GetTexture(type, i, &str);
-			bool skip = false;
-			for (unsigned int j = 0; j < textures_loaded.size(); ++j)
-			{
-				if (std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
-				{
-					textures.push_back(textures_loaded[j]);
-					skip = true;
-					break;
-				}
-			}
-			if (!skip)
+			string materialPath = str.C_Str();
+			if (textures_loaded.find(materialPath) == textures_loaded.end())
 			{
 				Texture texture;
-				texture.id = loadTexture(str.C_Str(), this->directory);
+				texture.id = loadTexture(materialPath, this->directory);
 				texture.texture_t = texture_t;
-				texture.path = str.C_Str();
+				texture.path = materialPath;
 				textures.push_back(texture);
-				textures_loaded.push_back(texture);
+				textures_loaded[materialPath] = texture;
+			}
+			else
+			{
+				textures.push_back(textures_loaded[materialPath]);
 			}
 		}
 		return textures;
