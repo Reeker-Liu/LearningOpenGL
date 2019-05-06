@@ -22,6 +22,7 @@ struct Vertex {
 	glm::vec2 texCoord;
 	glm::vec3 tangent;
 	glm::vec3 bitangent;
+	glm::vec3 color;	//if no texture provided, check color;
 };
 
 enum class texture_t_t { DIFFUSE, SPECULAR, NORMAL, HEIGHT };
@@ -127,6 +128,9 @@ private:
 
 		glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, bitangent));
 		glEnableVertexAttribArray(4);
+
+		glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
+		glEnableVertexAttribArray(5);
 
 		glBindVertexArray(0);
 	}

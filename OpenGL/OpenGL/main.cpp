@@ -18,7 +18,7 @@ void processInput(GLFWwindow* window);
 
 unsigned int loadTexture(char const * path);
 
-const unsigned int WIDTH = 600;
+const unsigned int WIDTH = 800;
 const unsigned int HEIGHT = 600;
 
 float deltaTime = 0.0f;
@@ -89,8 +89,8 @@ int main()
 	//Shader shader("shader/vlight.glsl", "shader/flight.glsl");
 	Shader lightShader("shader/vlight.glsl", "shader/f_light.glsl");
 
-	Model suitModel("resources/objects/nanosuit/nanosuit.obj");
-
+	//Model suitModel("resources/objects/nanosuit/nanosuit.obj");
+	Model suitModel("resources/objects/ce/ce.obj");
 
 
 	//set up vertices
@@ -202,6 +202,7 @@ int main()
 
 		//draw 
 		shader.use();
+		//shader.setBool("useTexture", false);
 
 		glm::mat4 projection = glm::perspective(glm::radians(camera.zoom), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 		glm::mat4 view = camera.getViewMatrix();
@@ -210,7 +211,7 @@ int main()
 
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::scale(model, glm::vec3(0.2f));
 		shader.setMat4("model", model);
 		
 		shader.setFloat("material.shininess", 32.0f);

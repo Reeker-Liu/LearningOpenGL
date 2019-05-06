@@ -112,15 +112,32 @@ private:
 			else
 				vertex.texCoord = glm::vec2(0.0f);
 
-			v3.x = mesh->mTangents[i].x;
-			v3.y = mesh->mTangents[i].y;
-			v3.z = mesh->mTangents[i].z;
-			vertex.tangent = v3;
+			if (mesh->mTangents)
+			{
+				v3.x = mesh->mTangents[i].x;
+				v3.y = mesh->mTangents[i].y;
+				v3.z = mesh->mTangents[i].z;
+				vertex.tangent = v3;
+			}
+			
 
-			v3.x = mesh->mBitangents[i].x;
-			v3.y = mesh->mBitangents[i].y;
-			v3.z = mesh->mBitangents[i].z;
-			vertex.bitangent = v3;
+			if (mesh->mBitangents)
+			{
+				v3.x = mesh->mBitangents[i].x;
+				v3.y = mesh->mBitangents[i].y;
+				v3.z = mesh->mBitangents[i].z;
+				vertex.bitangent = v3;
+			}
+
+			if (mesh->mColors[0])
+			{
+				v3.x = mesh->mColors[i]->r;
+				v3.y = mesh->mColors[i]->g;
+				v3.z = mesh->mColors[i]->b;
+				vertex.color = v3;
+			}
+			else
+				vertex.color = glm::vec3(1.0);
 
 			vertices.push_back(vertex);
 		}
